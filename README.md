@@ -1,8 +1,10 @@
-# ClowneActiveStorage
+# clowne_active_storage
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/clowne_active_storage`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Gem](https://img.shields.io/gem/v/clowne_active_storage.svg)](https://rubygems.org/gems/clowne_active_storage)
 
-TODO: Delete this and the text above, and describe your gem
+[Clowne][] is a flexible gem for making deep clones of your models. It supports ActiveRecord associations out of the box, so the whole dependency graph can be copied. This gem adds support for ActiveStorage attachments so they can be cloned in the process.
+
+[clowne]: https://github.com/palkan/clowne
 
 ## Installation
 
@@ -16,13 +18,17 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install clowne_active_storage
-
 ## Usage
 
-TODO: Write usage instructions here
+This gem adds one command to Clowne’s DSL: `include_attached`. You can use it like this:
+
+```ruby
+class PostCloner < Clowne::Cloner
+  include_attached :cover_image, :files
+end
+```
+
+`include_attached` can handle `has_one_attached` and `has_many_attached` ActiveStorage associations in the same command.
 
 ## Development
 
@@ -32,7 +38,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/clowne_active_storage. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/cbothner/clowne_active_storage. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -40,4 +46,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the ClowneActiveStorage project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/clowne_active_storage/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the ClowneActiveStorage project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/cbothner/clowne_active_storage/blob/master/CODE_OF_CONDUCT.md).
